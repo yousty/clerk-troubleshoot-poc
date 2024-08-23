@@ -39,8 +39,6 @@ export default clerkMiddleware(
     }
 
     const currentUserId = req.cookies.get('u_id')?.value;
-    // const currentCompanyId = req.cookies.get('c_id')?.value;
-    // let c_id: string | null = null;
     let u_id: string | null = null;
 
     if (userId && userId !== currentUserId) {
