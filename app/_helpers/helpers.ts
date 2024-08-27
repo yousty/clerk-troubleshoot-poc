@@ -17,9 +17,9 @@ import { createRouteMatcher } from '@clerk/nextjs/server';
 //   }
 // };
 
-const LocalePrefixPattern = '^\\/([\\w]{2})-([\\w]{2})';
 const PublicPaths = ['/sign-in(.*)', '/sign-up(.*)', '/after-sign-up', '/verify'];
-const PublicPathsRegex = PublicPaths.map(
-  (path) => new RegExp(LocalePrefixPattern + '\\/' + path + '$')
-);
+const LocalePrefixPattern = '^\\/([\\w]{2})-([\\w]{2})';
+// Mapping through PublicPaths and appending LocalePrefixPattern correctly
+const PublicPathsRegex = PublicPaths.map((path) => new RegExp(`${LocalePrefixPattern}${path}$`));
+
 export const isPublicRoute = createRouteMatcher(PublicPaths);
